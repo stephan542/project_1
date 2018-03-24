@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+{% block main %}
+    <div class="user_info">
+        <table class="user_data">
+            <tr>
+                <img class="pro_pic" src="{{ url_for('static', filename="images/" + filename) }}" />
+                <table class="sub_table">
+                    <tr>
+                        <h3>{{first_name}} {{lastname}}</h3>
+                    </tr>
+                     <tr>
+                        <p><img src="/static/images/mail.png" width="16px" height="16px"> {{email}}</p>
+                    </tr>
+                     <tr>
+                        <p><img src="/static/images/location.png" width="16px" height="16px"> {{location}}</p>
+                    </tr>
+                     <tr>
+                        <p><img src="/static/images/calendar.png" width="16px" height="16px"> {{datte}}</p>
+                    </tr>
+                </table>
+            </td>
+            </tr>
+            <tr>
+                <p><b>About Me</b><br>{{bio}}</p>
+            </tr>
+            <tr>
+                <button class="submit_btn">Send Message</button>
+                <button class="submit_btn spec2">Follow</button>
+            </tr>
+        </table>
+    </div>
+{%endblock%}

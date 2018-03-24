@@ -1,0 +1,108 @@
+body{
+    font-family: Calibri,cursive;
+    background-color: #CEE4F6;
+}
+
+#navbar{
+   position:absolute;
+   top:0;
+   left:0;  
+   z-index:0;
+   width:100%;
+   background:#276AA1;
+}
+.create{
+    margin-top:80px;
+    margin-left:35%;
+    font-size:40px;
+    font-weight:800;
+}
+.nav-items{
+    display:inline;
+}
+.nav-item{
+    list-style:none;
+    display:inline;
+    font-size:22px;
+}
+.creation_form{
+    width:30%;
+    margin-left:35%;
+    padding:10px 30px;
+    border-top:5px #357AFB solid;;
+    border-radius:5px;
+    background:white;
+}
+.nav-link{
+    text-decoration:none;
+    color:white;
+}
+input,select{
+    font-size:16px;
+    width:99%;
+    padding:8px;
+    border:1px lightgray solid;
+    border-radius:7px;
+    color:gray;
+}
+select{
+    width:100%;
+}
+input:nth-child(14){
+    border:none;
+}
+option{
+    color:black;
+}
+option:first-child{
+    color:gray;
+}
+.spec{
+    margin-right: 100px;
+}
+textarea{
+    width:100%;
+    height:160px;
+    border-radius:8px;
+     border:1px lightgray solid;
+}
+.submit_btn{
+    background:#50B71F;
+    color:white;
+    font-size:18px;
+    padding:4px;
+    border-radius:5px;
+    margin-top:30px;
+    border:none;
+    width:40%
+}
+
+.spec2{
+    background:#5DA3DD;
+    margin-left:20px;
+}
+.user_info{
+    background:white;
+    width:40%;
+    padding:20px;
+    margin-top:80px;
+    margin-left:30%;
+    border-radius:5px;
+    border-top:5px #357AFB solid;
+    box-shadow:0px 0px 15px gray;
+}
+.sub_table{
+    float:right;
+}
+.pro_pic{
+    display:inline;
+    height:32%;
+    width:32%;
+    float:left
+}
+p{
+    color:lightgray;
+}
+i{
+    color:red;
+}

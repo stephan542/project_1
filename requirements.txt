@@ -1,0 +1,13 @@
+# ----------------------------
+#   Needed Packages
+# ------------------------------
+
+Flask
+Flask-WTF
+Jinja2
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login
+psycopg2
+WTForms
+gunicorn

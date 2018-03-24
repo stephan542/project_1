@@ -1,0 +1,68 @@
+{% extends "base.html" %} 
+{% block main %}
+    <h2 class="create">Add Profile</h2>
+        
+      <form class="creation_form" action="{{url_for('home')}}" method="POST" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+      {% for message in form.last_name.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.last_name.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.gender.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.location.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.bio.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.photo.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+      
+      {% for message in form.email.errors %}
+         <div><i>{{ message }}</i></div>
+      {% endfor %}
+          <table>
+              <tr>
+                  <h4>{{form.first_name.label}}</h4>
+                  {{form.first_name}}
+              </tr>
+              <tr>
+                  <h4>{{form.last_name.label}}</h4>
+                  {{form.last_name}}
+              </tr>
+              <tr>
+                  <h4>{{form.gender.label}}</h4>
+                  {{form.gender}}
+              </tr>
+              <tr>
+                  <h4>{{form.email.label}}</h4>
+                  {{form.email}}
+              </tr>
+              <tr>
+                  <h4>{{form.location.label}}</h4>
+                  {{form.location}}
+              </tr>
+              <tr>
+                  <h4>{{form.bio.label}}</h4>
+                  {{form.bio}}
+              </tr>
+              <tr>
+                  <h4>{{form.photo.label}}</h4>
+                      {{form.photo(class_="browse_btn")}}
+              </tr>
+              <tr>
+                  {{form.submit(class_="submit_btn")}}
+              </tr>
+          </table>
+      </form>
+{%endblock%}
