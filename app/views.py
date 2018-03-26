@@ -11,7 +11,7 @@ import os
 def home():
     form = CreationForm()
     if request.method == "POST":
-        if True:
+        if form.validate():
             return profile()
     
     return render_template('home.html',form=form)
@@ -27,24 +27,23 @@ def profile():
        if current_user.is_authenticated:
             return render_template("profile.html",form=form)
             
-       if True:
+       if form.validate():
            user = UserProfile(first_name=request.form['first_name'],last_name=request.form['last_name'],
                                 email=request.form['email'],location=request.form['location'],
-                                photo=request.form['photo'],bio=request.form['bio'],gender=request.form['gender'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
+                                photo=request.files['photo'].filename,bio=request.form['bio'],gender=request.form['gender'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
            db.session.add(user)
            db.session.commit()
-            
-           file = request.files['file']
+           
+           file = request.files['photo']
            filename = secure_filename(file.filename)
           
            file.save(os.path.join(
                 app.config['UPLOAD_FOLDER'], filename
             ))
-           print("ok")
            flash('You have successfully filled out the form', 'success')
-           return render_template("profile.html",first_name=request.file['first_name'],last_name=request.form['last_name'],
+           return render_template("profile.html",first_name=request.form['first_name'],last_name=request.form['last_name'],
                                 email=request.form['email'],location=request.form['location'],
-                                photo=request.form['photo'],bio=request.form['bio'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
+                                photo=filename,bio=request.form['bio'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
       
        return redirect(url_for('home'))
     
