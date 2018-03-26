@@ -24,10 +24,8 @@ def about():
 @app.route('/profile' , methods=["GET","POST"])
 def profile():
        form = CreationForm()
-       if current_user.is_authenticated:
-            return render_template("profile.html",form=form)
             
-       if form.validate():
+       if form.validate() and request.method == "POST":
            user = UserProfile(first_name=request.form['first_name'],last_name=request.form['last_name'],
                                 email=request.form['email'],location=request.form['location'],
                                 photo=request.files['photo'].filename,bio=request.form['bio'],gender=request.form['gender'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
@@ -44,8 +42,24 @@ def profile():
            return render_template("profile.html",first_name=request.form['first_name'],last_name=request.form['last_name'],
                                 email=request.form['email'],location=request.form['location'],
                                 photo=filename,bio=request.form['bio'],datte=datetime.datetime.now().strftime("%B %d,%Y"))
+       
+       return profiles("Please select a profile")
       
-       return redirect(url_for('home'))
+@app.route('/profiles/')
+def profiles(mes=""):
+    message=mes
+    data=[]
+    info = UserProfile.query.filter().all()
+    for x in info:
+        if x.photo != "":
+            data.append([x.first_name,x.last_name,x.photo,x.location,x.gender])
+            
+    print(data[2])
+    return render_template('profiles.html',data=data,message2=message)
+    
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html',message="Something when wrong"), 404 
     
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")

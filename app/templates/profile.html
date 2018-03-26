@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% block main %}
     <div class="user_info">
+        <h4>{{message2}}</h4>
         <table class="user_data">
             <tr>
                 <img class="pro_pic" src="{{ url_for('static', filename="images/" + photo) }}" />
@@ -18,7 +19,6 @@
                         <p><img src="/static/images/calendar.png" width="16px" height="16px"> {{datte}}</p>
                     </tr>
                 </table>
-            </td>
             </tr>
             <tr>
                 <p><b>About Me</b><br>{{bio}}</p>
@@ -29,4 +29,11 @@
             </tr>
         </table>
     </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
 {%endblock%}
