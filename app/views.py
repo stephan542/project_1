@@ -54,7 +54,6 @@ def profiles(mes=""):
         if x.photo != "":
             data.append([x.first_name,x.last_name,x.photo,x.location,x.gender])
             
-    print(data[2])
     return render_template('profiles.html',data=data,message2=message)
     
 @app.errorhandler(404)
